@@ -34,4 +34,12 @@ describe("calculator", function () {
     calculator.divide(7);
     assert.equal(3, calculator.runningTotal);
   });
+
+  it("should concatate multiple number clicks", function(){
+    calculator.numberClick (1);
+    calculator.numberClick(2);
+    calculator.numberClick(3);
+    assert.equal(123, calculator.runningTotal);
+  })
+
 });
