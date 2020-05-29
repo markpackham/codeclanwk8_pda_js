@@ -70,4 +70,18 @@ describe('calculator functionality', function() {
     expect(running_total.getAttribute('value')).to.eventually.equal('0.5')
   })
 
+  it('should output a large value', function(){
+    element(by.css('#number9')).click();
+    element(by.css('#operator_multiply')).click();
+    element(by.css('#number9')).click();
+    element(by.css('#operator_multiply')).click();
+    element(by.css('#number9')).click();
+    element(by.css('#operator_multiply')).click();
+    element(by.css('#number9')).click();
+    element(by.css('#operator_multiply')).click();
+    element(by.css('#number9')).click();
+    element(by.css('#operator_equals')).click();
+    expect(running_total.getAttribute('value')).to.eventually.equal('59049')
+  })
+
 });
