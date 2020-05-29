@@ -35,30 +35,32 @@ describe("calculator", function () {
     assert.equal(3, calculator.runningTotal);
   });
 
-  it("should concatate multiple number clicks", function(){
+  it("should concatate multiple number clicks", function () {
     calculator.numberClick(1);
     calculator.numberClick(2);
     calculator.numberClick(3);
     assert.equal(123, calculator.runningTotal);
-  })
+  });
 
+  it("should chain multiple operators together", function () {
+    calculator.numberClick(5);
+    calculator.operatorClick("-");
+    calculator.numberClick(1);
+    calculator.operatorClick("+");
+    calculator.numberClick(3);
+    calculator.operatorClick("=");
+    assert.equal(7, calculator.runningTotal);
+  });
 
- it("should chain multiple operators together", function(){
-  calculator.numberClick(5)
-  calculator.operatorClick('-')
-  calculator.numberClick(1)
-  calculator.operatorClick('+')
-  calculator.numberClick(3)
-  calculator.operatorClick('=')
-  assert.equal(7, calculator.runningTotal);
- })
-
-//  it("should clear the running total without effecting the operation", function(){
-//   calculator.previousTotal = 1;
-//   calculator.add(4);
-//   calculator.clearClick()
-//   calculator.add(999)
-//   assert.equal(1000, calculator.runningTotal);
-//  })
-
+  it("should clear the running total without effecting the operation", function () {
+    calculator.numberClick(5);
+    calculator.operatorClick("-");
+    calculator.numberClick(1);
+    calculator.operatorClick("+");
+    calculator.numberClick(732); // this number should be ignored since we clear it later
+    calculator.clearClick();
+    calculator.numberClick(3);
+    calculator.operatorClick("=");
+    assert.equal(7, calculator.runningTotal);
+  });
 });
